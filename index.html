@@ -1,0 +1,589 @@
+<!--
+Google IO 2012 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahe <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Google IO 2012</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" media="all" href="theme/css/default.css">
+  <link rel="stylesheet" media="all" href="theme/css/app.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+<!-- <slide class="logoslide nobackground">
+  <article class="flexbox vcenter">
+    <span><img src="images/google_developers_logo.png"></span>
+  </article>
+</slide>
+ -->
+<slide class="title-slide segue nobackground">
+  <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
+  <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+  <hgroup class="auto-fadein">
+    <h1 data-config-title><!-- populated from slide_config.json --></h1>
+    <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+    <p data-config-presenter><!-- populated from slide_config.json --></p>
+  </hgroup>
+</slide>
+
+
+<slide class="big" >
+  
+    <hgroup>
+      <h2>Frameworks actuels</h2>
+      <h3>De nombreux paradigmes</h3>
+    </hgroup>
+    <article ><ul>
+<li>
+<p>Model / View (Backbone)</p>
+</li>
+<li>
+<p>Routing (Ember)</p>
+</li>
+<li>
+<p>Layout (ExtJS)</p>
+</li>
+<li>
+<p>Knockout, Batman, Spine, ...</p>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="big" >
+  
+    <hgroup>
+      <h2>Problèmes récurrents</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><ul>
+<li>
+<p>Chacun introduit de nouveaux concepts</p>
+</li>
+<li>
+<p>Courbe d'apprentissage écrasante</p>
+</li>
+<li>
+<p>Manque de convention de conception</p>
+</li>
+<li>
+<p>Complexe à configurer ou étendre</p>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Angular à la rescousse</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><ul>
+<li>
+<p>Chacun introduit de nouveaux concepts
+  <div style="color:red">Angular étend principalement l'HTML</div></p>
+</li>
+<li>
+<p>Courbe d'apprentissage écrasante
+  <div style="color:red">Peu de concepts nouveaux</div></p>
+</li>
+<li>
+<p>Manque de convention de conception
+  <div style="color:red">'The angular way' est clairement définie</div></p>
+</li>
+<li>
+<p>Complexe à configurer ou étendre
+  <div style="color:red">Très peu de code pour ajouter des fonctionnalités</div></p>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="big" >
+  
+    <hgroup>
+      <h2>Concepts clefs</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><ul>
+<li>
+<p>HTML étendu</p>
+</li>
+<li>
+<p>DOM scoppé</p>
+</li>
+<li>
+<p>Mise à jour automatique</p>
+</li>
+<li>
+<p>Injection de dépendances</p>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>HTML étendu</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Variables</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><pre class="prettyprint" data-lang="html">
+&lt;h1&gt;{{ name }}&lt;/h1&gt;
+&lt;h2&gt;By {{ author }}&lt;/h2&gt;
+&lt;p&gt;{{ content }}&lt;/p&gt;
+</pre>
+
+<pre class="prettyprint" data-lang="html">
+&lt;ul&gt;
+  &lt;li&gt;{{ price }} excluding taxes&lt;/li&gt;
+  &lt;li&gt;{{ price * 1.197 }} including taxes&lt;/li&gt;
+&lt;/ul&gt;
+</pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Logical blocks</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><pre class="prettyprint" data-lang="html">
+&lt;div&gt;Hi {{ name }} !&lt;/div&gt;
+
+&lt;div ng-show="name == 'maël'"&gt;
+  Did you know that you're especially awesome ?
+&lt;div&gt;
+</pre>
+
+<pre class="prettyprint" data-lang="html">
+&lt;div ng-repeat="post in posts"&gt;
+  &lt;h1&gt;{{ post.name }}&lt;/h1&gt;
+  &lt;h2&gt;By {{ post.author }}&lt;/h2&gt;
+  &lt;p&gt;{{ post.content }}&lt;/p&gt;
+&lt;/div&gt;
+</pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Filtres</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><pre class="prettyprint" data-lang="html">
+&lt;div ng-repeat="post in posts"&gt;
+  &lt;h1&gt;{{ post.name }}&lt;/h1&gt;
+  &lt;h2&gt;Published on {{ post.publish_date | date }} by {{ post.author }}&lt;/h2&gt;
+  &lt;p&gt;{{ post.content }}&lt;/p&gt;
+&lt;/div&gt;
+</pre>
+
+<pre class="prettyprint" data-lang="html">
+&lt;h1&gt;Some names containing '{{ query | uppercase }}'&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li ng-repeat="name in names | filter:query | limitTo:10"&gt;
+    {{ name }}
+  &lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+
+<p>Pas énormément de filtres standard, cependant.</p></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>DOM scoppé</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Controlleur</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><p>Chaque élément peut avoir un controlleur associé</p>
+<pre class="prettyprint" data-lang="javascript">
+function MyController( $scope ) {
+  $scope.users = [ 'jean', 'jules', 'sylvain' ];
+}
+</pre>
+
+<pre class="prettyprint" data-lang="html">
+&lt;ul ng-controller="MyController"&gt;
+  &lt;li ng-foreach="user in users"&gt;
+    {{ user }}
+  &lt;/li&gt;
+&lt;/ul&gt;
+</pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Sous-controlleurs</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><p>Les blocs logiques peuvent aussi avoir leurs controlleurs</p>
+<pre class="prettyprint" data-lang="javascript">
+function MyController( $scope ) {
+  $scope.users = [ 'jean', 'jules', 'sylvain' ];
+}
+
+function MySubController( $scope ) {
+  $scope.value = Math.random( );
+}
+</pre>
+
+<pre class="prettyprint" data-lang="html">
+&lt;ul ng-controller="MyController"&gt;
+  &lt;li ng-foreach="user in users" ng-repeat="MySubController"&gt;
+    {{ user }} picked the value {{ rnd }}
+  &lt;/li&gt;
+&lt;/ul&gt;
+</pre></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Mise à jour automatique</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Modèles</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><pre class="prettyprint" data-lang="html">
+&lt;input type="text" ng-model="username" /&gt;
+&lt;div&gt;Vous appelez-vous {{ username }} ?&lt;/div&gt;
+</pre>
+
+<pre class="prettyprint" data-lang="html">
+&lt;input type="text" ng-model="query" /&gt;
+
+&lt;h1&gt;Names matching '{{ query | uppercase }}'&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li ng-repeat="name in names | filter:query"&gt;
+    {{ name }}
+  &lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+
+<pre class="prettyprint" data-lang="html">
+&lt;input type="number" ng-model="price" /&gt;
+&lt;div&gt;{{ price | currency }} excluding taxes&lt;/div&gt;
+&lt;div&gt;{{ price * 1.197 | currency }} including taxesHT&lt;/div&gt;
+</pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Scopes</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><pre class="prettyprint" data-lang="javascript">
+function MyController( $scope ) {
+  $scope.value = 0;
+
+  $scope.add = function ( ) {
+    $scope.value += 1;
+  };
+
+  $scope.sub = function ( ) {
+    $scope.value -= 1;
+  };
+}
+</pre>
+
+<pre class="prettyprint" data-lang="html">
+&lt;div ng-controller="MyController"&gt;
+  &lt;input type="button" ng-click="add()" &gt;
+  &lt;input type="button" ng-click="sub()" &gt;
+  &lt;div&gt;Current value : {{ value }}&gt;
+&lt;/div&gt;
+</pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>$Watch !</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><pre class="prettyprint" data-lang="javascript">
+function MyController( $scope ) {
+  $scope.$watch( 'text', function ( ) {
+    $scope.hash = md5( $scope.text );
+  } );
+}
+</pre>
+
+<pre class="prettyprint" data-lang="html">
+&lt;div ng-controller="MyController"&gt;
+  &lt;input type="text" ng-model="text" /&gt;
+  &lt;div&gt;MD5 hash : {{ hash }}&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+
+<p>Pour cet usage, notez qu'un filtre aurait été suffisant :)</p>
+<pre class="prettyprint" data-lang="html">
+&lt;div&gt;
+  &lt;input type="text" ng-model="text" /&gt;
+  &lt;div&gt;MD5 hash : {{ text | md5 }}&lt;/div&gt;
+&lt;/div&gt;
+</pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Avertissement</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><p><span style="color:red">Ce code ne fonctionne pas !</span></p>
+<pre class="prettyprint" data-lang="javascript">
+function MyController( $scope ) {
+  window.setInterval( function ( ) {
+    $scope.value += 1;
+  }, 1000 );
+}
+</pre>
+
+<pre class="prettyprint" data-lang="html">
+&lt;div ng-controller="MyController"&gt;
+  &lt;div&gt;Current value : {{ value }}&lt;/&gt;
+&lt;/div&gt;
+</pre>
+
+<p>La vue ne sera pas modifiée.</p></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Injection de dépendances</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Injections dans les controlleurs</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><pre class="prettyprint" data-lang="javascript">
+function MyController( $scope ) {
+  // ...
+}
+</pre>
+
+<p>Angular a analysé le code de <code>MyController</code> et déduit que le service nommé <code>$scope</code> était requis.</p>
+<p>Autre façon de faire :</p>
+<pre class="prettyprint" data-lang="javascript">
+var MyController = [ '$scope', function ( $scope ) {
+  // ...
+} ];
+</pre>
+
+<p>Ceci évite qu'uglifyjs ou autre ne brise les noms des arguments.</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Quelques services existants</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><ul>
+<li>
+<p><code>$scope</code></p>
+</li>
+<li>
+<p><code>$timeout</code>, pour émuler <code>window.setTimeout</code></p>
+</li>
+<li>
+<p><code>$http</code>, pour les requêtes Ajax</p>
+</li>
+<li>
+<p><code>$location</code>, pour l'URL actuelle</p>
+</li>
+<li>
+<p>...</p>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Définir son propre service</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><p>Trois façons, trois noms :</p>
+<ul>
+<li>
+<p><code>app.service(...)</code></p>
+</li>
+<li>
+<p><code>app.factory(...)</code></p>
+</li>
+<li>
+<p><code>app.provider(...)</code></p>
+</li>
+</ul>
+<p>Chacun plus complexe mais plus puissant que le précédent.</p>
+<p>Référez-vous à <a href="https://gist.github.com/Mithrandir0x/3639232">ce gist</a> pour un exemple.</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>'The angular way'</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><pre class="prettyprint" data-lang="javascript">
+Application.provider( 'quotes', function ( ) {
+    this.$get = [ '$http', function ( $http ) { return {
+        items : [ ],
+        fetch : function ( ) {
+            $http( {
+                method : 'GET', '/quotes.json'
+            } ).then( function ( res ) {
+                this.items // we want to keep the same array !
+                  .splice( 0, this.items.length )
+                  .push.apply( this.items, res.data.items );
+            }.bind( this ), function ( res ) {
+                console.error( res.data.error );
+            } );
+        }
+    }; } ];
+} );
+</pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Utilisation du service</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><pre class="prettyprint" data-lang="javascript">
+function MyController( $scope, quotes ) {
+  $scope.quotes = quotes.items;
+  $scope.refresh = function ( ) {
+    quotes.fetch( );
+  };
+}
+</pre>
+
+<pre class="prettyprint" data-lang="html">
+&lt;div ng-controller="MyController"&gt;
+  &lt;button ng-click="refresh()" value="Refresh quotes" /&gt;
+  &lt;ul&gt;
+    &lt;li ng-repeat="quote in quotes"&gt;
+      "{{ quote.text }}" - by {{ quote.author }}
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+</pre></article>
+ 
+</slide>
+
+
+<slide class="thank-you-slide segue nobackground">
+  <aside class="gdbar right"><img src="images/google_developers_icon_128.png"></aside>
+  <article class="flexbox vleft auto-fadein">
+    <h2>Merci !</h2>
+    <p>A bient&ocirc;t sur Twitter ? :)</p>
+  </article>
+  <p class="auto-fadein" data-config-contact>
+    <!-- populated from slide_config.json -->
+  </p>
+</slide>
+
+<!-- <slide class="logoslide dark nobackground">
+  <article class="flexbox vcenter">
+    <span><img src="images/google_developers_logo_white.png"></span>
+  </article>
+</slide> -->
+
+<slide class="backdrop"></slide>
+
+</slides>
+
+<!-- Piwik --> 
+<script type="text/javascript">
+var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.arcastel.com/" : "http://piwik.arcastel.com/");
+document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script type="text/javascript">
+try {
+var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 4);
+piwikTracker.trackPageView();
+piwikTracker.enableLinkTracking();
+} catch( err ) {}
+</script><noscript><p><img src="http://piwik.arcastel.com/piwik.php?idsite=4" style="border:0" alt="" /></p></noscript>
+<!-- End Piwik Tracking Code -->
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>
