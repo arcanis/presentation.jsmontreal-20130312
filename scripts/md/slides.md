@@ -115,7 +115,7 @@ title: Filtres
 &lt;/ul&gt;
 </pre>
 
-Pas énormément de filtres standard, cependant.
+Pas énormément de filtres standards, cependant.
 
 ---
 
@@ -124,9 +124,9 @@ class: segue dark
 
 ---
 
-title: Controlleur
+title: Contrôleur
 
-Chaque élément peut avoir un controlleur associé
+Chaque élément peut avoir un contrôleur associé
 
 <pre class="prettyprint" data-lang="javascript">
 function MyController( $scope ) {
@@ -136,7 +136,7 @@ function MyController( $scope ) {
 
 <pre class="prettyprint" data-lang="html">
 &lt;ul ng-controller="MyController"&gt;
-  &lt;li ng-foreach="user in users"&gt;
+  &lt;li ng-repeat="user in users"&gt;
     {{ user }}
   &lt;/li&gt;
 &lt;/ul&gt;
@@ -144,9 +144,9 @@ function MyController( $scope ) {
 
 ---
 
-title: Sous-controlleurs
+title: Sous-contrôleurs
 
-Les blocs logiques peuvent aussi avoir leurs controlleurs
+Chaque élément peut avoir son propre contrôleur, y compris les blocs logiques.
 
 <pre class="prettyprint" data-lang="javascript">
 function MyController( $scope ) {
@@ -160,7 +160,7 @@ function MySubController( $scope ) {
 
 <pre class="prettyprint" data-lang="html">
 &lt;ul ng-controller="MyController"&gt;
-  &lt;li ng-foreach="user in users" ng-repeat="MySubController"&gt;
+  &lt;li ng-repeat="user in users" ng-controller="MySubController"&gt;
     {{ user }} picked the value {{ rnd }}
   &lt;/li&gt;
 &lt;/ul&gt;
@@ -332,7 +332,12 @@ Référez-vous à [ce gist](https://gist.github.com/Mithrandir0x/3639232) pour u
 
 ---
 
-title: 'The angular way'
+title: The Angular Way
+class: segue dark nobackground
+
+---
+
+title: Déclaration du service des Quotes
 
 <pre class="prettyprint" data-lang="javascript">
 Application.provider( 'quotes', function ( ) {
