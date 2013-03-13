@@ -154,7 +154,7 @@ function MyController( $scope ) {
 }
 
 function MySubController( $scope ) {
-  $scope.value = Math.random( );
+  $scope.rnd = Math.random( );
 }
 </pre>
 
