@@ -217,7 +217,7 @@ URL: https://code.google.com/p/io-2012-slides
 &lt;/ul&gt;
 </pre>
 
-<p>Pas énormément de filtres standard, cependant.</p></article>
+<p>Pas énormément de filtres standards, cependant.</p></article>
  
 </slide>
 
@@ -234,10 +234,10 @@ URL: https://code.google.com/p/io-2012-slides
 <slide  >
   
     <hgroup>
-      <h2>Controlleur</h2>
+      <h2>Contrôleur</h2>
       <h3></h3>
     </hgroup>
-    <article ><p>Chaque élément peut avoir un controlleur associé</p>
+    <article ><p>Chaque élément peut avoir un contrôleur associé</p>
 <pre class="prettyprint" data-lang="javascript">
 function MyController( $scope ) {
   $scope.users = [ 'jean', 'jules', 'sylvain' ];
@@ -246,7 +246,7 @@ function MyController( $scope ) {
 
 <pre class="prettyprint" data-lang="html">
 &lt;ul ng-controller="MyController"&gt;
-  &lt;li ng-foreach="user in users"&gt;
+  &lt;li ng-repeat="user in users"&gt;
     {{ user }}
   &lt;/li&gt;
 &lt;/ul&gt;
@@ -257,23 +257,23 @@ function MyController( $scope ) {
 <slide  >
   
     <hgroup>
-      <h2>Sous-controlleurs</h2>
+      <h2>Sous-contrôleurs</h2>
       <h3></h3>
     </hgroup>
-    <article ><p>Les blocs logiques peuvent aussi avoir leurs controlleurs</p>
+    <article ><p>Chaque élément peut avoir son propre contrôleur, y compris les blocs logiques.</p>
 <pre class="prettyprint" data-lang="javascript">
 function MyController( $scope ) {
   $scope.users = [ 'jean', 'jules', 'sylvain' ];
 }
 
 function MySubController( $scope ) {
-  $scope.value = Math.random( );
+  $scope.rnd = Math.random( );
 }
 </pre>
 
 <pre class="prettyprint" data-lang="html">
 &lt;ul ng-controller="MyController"&gt;
-  &lt;li ng-foreach="user in users" ng-repeat="MySubController"&gt;
+  &lt;li ng-repeat="user in users" ng-controller="MySubController"&gt;
     {{ user }} picked the value {{ rnd }}
   &lt;/li&gt;
 &lt;/ul&gt;
@@ -490,10 +490,20 @@ var MyController = [ '$scope', function ( $scope ) {
  
 </slide>
 
+<slide class="segue dark nobackground" >
+  
+    <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>The Angular Way</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
 <slide  >
   
     <hgroup>
-      <h2>'The angular way'</h2>
+      <h2>Déclaration du service des Quotes</h2>
       <h3></h3>
     </hgroup>
     <article ><pre class="prettyprint" data-lang="javascript">
